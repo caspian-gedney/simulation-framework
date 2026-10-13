@@ -2,6 +2,7 @@ import pyglet
 
 from src import __title__, __version__
 from src.config import get_config
+from .rendering import Renderer
 
 __all__ = ["Window"]
 
@@ -17,11 +18,14 @@ class Window:
         )
         self.window.push_handlers(self)
 
+        self.renderer = Renderer()
+
     def on_update(self, delta: float) -> None:
         pass
 
     def on_draw(self) -> None:
         self.window.clear()
+        self.renderer.render()
 
     def run(self) -> None:
         pyglet.clock.schedule_interval(self.on_update, 1/60)
