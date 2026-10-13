@@ -10,3 +10,9 @@ height = 300
 
 background_color = [0, 0, 0]
 letterbox_color = [0, 0, 0.05]
+
+[debug]
+font_size = 24
+font_name = "Arial"
+font_color = [255, 255, 0]
+font_spacing = 4

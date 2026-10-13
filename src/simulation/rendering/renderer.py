@@ -100,6 +100,11 @@ class Renderer:
 
         self.quad.draw(GL_TRIANGLE_STRIP)
 
+        glViewport(0, 0, width, height)
+        self._window.projection = Mat4.orthogonal_projection(
+            0, width, 0, height, -1, 1
+        )
+
     def render(self):
         self._render_to_texture()
         self._render_to_screen()
