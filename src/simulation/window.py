@@ -18,7 +18,7 @@ class Window:
         )
         self.window.push_handlers(self)
 
-        self.renderer = Renderer()
+        self.renderer = Renderer(self.window)
 
     def on_update(self, delta: float) -> None:
         pass
