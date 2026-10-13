@@ -2,7 +2,7 @@ from tomllib import load
 
 from src import ROOT_PATH
 
-__all__ = ['get_config']
+__all__ = ["get_config"]
 
 CONFIG_PATH = ROOT_PATH / "config.toml"
 

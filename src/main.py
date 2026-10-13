@@ -1,2 +1,5 @@
+from src.simulation import Window
+
 if __name__ == "__main__":
-    print("Hello, world!")
+    window = Window()
+    window.run()
