@@ -1,0 +1,7 @@
+# IDE Files
+/.idea
+/.vscode
+
+# Byte-compiled files
+__pycache__/
+*.pyc
