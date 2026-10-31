@@ -45,11 +45,12 @@ class DebugManager:
         self._labels["fps"].text = f"fps: {framerate}"
 
     def update_position(self, window_size: tuple[int, int]) -> None:
-        self._labels["fps"].position = (
-            _config["font_spacing"],
-            (window_size[1] - (_config["font_size"] + _config["font_spacing"])),
-            0
-        )
+        for i, label in enumerate(self._labels.values()):
+            label.position = (
+                _config["font_spacing"],
+                (window_size[1] - (_config["font_size"] + _config["font_spacing"]) * (i + 1)),
+                0
+            )
 
     def render(self) -> None:
         if self._active:
