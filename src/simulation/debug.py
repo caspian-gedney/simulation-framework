@@ -14,19 +14,25 @@ _label_data = {
 
 
 class DebugManager:
-    def __init__(self, window_size: tuple[int, int]) -> None:
+    def __init__(self, data: tuple[int, int, int, int]) -> None:
         self._active = False
 
         self.batch = graphics.Batch()
 
         self._labels = {
             "fps": text.Label(
-                "fps: 0", y = (window_size[1] - (_config["font_size"] + _config["font_spacing"])), batch=self.batch,
+                "fps: 0", y = (data[3] - (_config["font_size"] + _config["font_spacing"])), batch=self.batch,
                 **_label_data
+            ),
+            "win_size": text.Label(
+                "win_size: 0x0 (0x0)", y = (data[3] - (_config["font_size"] + _config["font_spacing"]) * 2),
+                batch=self.batch, **_label_data
             ),
         }
 
         self._time_set = []
+
+        self.update_win_stats(data)
 
     def change_active(self) -> None:
         self._active = not self._active
@@ -43,6 +49,9 @@ class DebugManager:
         else:
             framerate = round(len(times) / sum(times), 1)
         self._labels["fps"].text = f"fps: {framerate}"
+
+    def update_win_stats(self, data: tuple[int, int, int, int]) -> None:
+        self._labels["win_size"].text = f"win_size: ({data[2]},{data[3]}) [{data[0]},{data[1]}]"
 
     def update_position(self, window_size: tuple[int, int]) -> None:
         for i, label in enumerate(self._labels.values()):

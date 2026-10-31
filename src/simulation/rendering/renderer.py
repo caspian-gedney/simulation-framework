@@ -42,7 +42,7 @@ class Renderer:
     def _draw_scene(self) -> None:
         pass
 
-    def _compute_letterbox(self) -> tuple[int, int, int, int]:
+    def compute_letterbox(self) -> tuple[int, int, int, int]:
         iw, ih = _config["width"], _config["height"]
         ew, eh = self._window.get_size()
 
@@ -86,7 +86,7 @@ class Renderer:
         self.program["screen_tex"] = 0
 
     def _render_to_screen(self) -> None:
-        x, y, new_w, new_h = self._compute_letterbox()
+        x, y, new_w, new_h = self.compute_letterbox()
 
         width, height = self._window.get_size()
         self._clear(

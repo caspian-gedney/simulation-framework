@@ -20,11 +20,12 @@ class Window:
         self.window.set_minimum_size(_config['min_width'], _config['min_height'])
         self.window.push_handlers(self)
 
-        self.debug = DebugManager(self.window.get_size())
         self.renderer = Renderer(self.window)
+        self.debug = DebugManager(self.renderer.compute_letterbox())
 
     def on_resize(self, width: int, height: int) -> None:
         self.debug.update_position((width, height))
+        self.debug.update_win_stats(self.renderer.compute_letterbox())
 
     def on_key_press(self, symbol: int, modifiers: int) -> None:
         if symbol == pyglet.window.key.F3:
