@@ -17,6 +17,7 @@ class Window:
             width = _config['width'], height = _config['height'],
             resizable = _config['resizable']
         )
+        self.window.set_minimum_size(_config['min_width'], _config['min_height'])
         self.window.push_handlers(self)
 
         self.debug = DebugManager(self.window.get_size())
